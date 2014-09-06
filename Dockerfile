@@ -12,5 +12,8 @@ ADD chromedriverctl /bin/chromedriverctl
 RUN chmod a+x /bin/chromedriverctl
 ADD chromewrapper /usr/bin/google-chrome-stable
 RUN chmod a+x /usr/bin/google-chrome-stable
+RUN npm install -g selenium-standalone
+ADD seleniumctl /bin/seleniumctl
+RUN chmod a+x /bin/seleniumctl
 USER strider
 ENV DISPLAY :99

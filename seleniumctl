@@ -1,0 +1,23 @@
+#!/bin/bash
+SELENIUM=/usr/local/bin/start-selenium
+PIDFILE=/tmp/selenium-${DISPLAY:1}.pid
+case "$1" in
+  start)
+    echo -n "Starting selenium"
+    /sbin/start-stop-daemon --start --quiet --pidfile $PIDFILE --make-pidfile --background --exec $SELENIUM
+    echo "."
+    ;;
+  stop)
+    echo -n "Stopping selenium"
+    /sbin/start-stop-daemon --stop --quiet --pidfile $PIDFILE
+    echo "."
+    ;;
+  restart)
+    $0 stop
+    $0 start
+    ;;
+  *)
+  echo "Usage: $0 {start|stop|restart}"
+  exit 1
+esac
+exit 0
